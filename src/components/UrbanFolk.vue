@@ -13,6 +13,7 @@
             </div>
             <div class="goruntuleme">
                 <span><router-link to="/urban-urunsayfa">GÖRÜNTÜLE</router-link></span>
+                <img
                 <div class="urun">
                     <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
                 </div>

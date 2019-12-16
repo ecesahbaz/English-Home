@@ -63,7 +63,7 @@ const routes = [
     component: Urunbilgi2
   },
   {
-    path: '/urbanfolk?page=2',
+    path: '/urbanfolkpage',
     name: 'urbanfolksayfa',
     component: Urbansayfa2
   },

@@ -9,7 +9,12 @@
       <li><a href="#">KATEGORİLER</a>
         <div class="sub-menu-1">
           <ul>
-            <li class="hover-me"><a href="#"><router-link to="/yatakodası">YATAK ODASI</router-link></a><i class="fa fa-angle-right"></i>
+            <li>
+              <b-button  class="hover-me"><a href="#"><router-link to="/yatakodası" @click="openModal">YATAK ODASI</router-link></a><i class="fa fa-angle-right"></i></b-button>
+
+              <b-modal id="modal-1" hide-footer="true" hide-header="true" size="sm" body-bg-variant="light" title="BootstrapVue">
+               <p class="my-4"><sweetalert-icon="loading" /> </p>
+              </b-modal>    
               <div class="sub-menu-2" style="width:400px;">
                 <ul class="menu1" style="list-style-type:none;">
                   <span>NEVRESİM TAKIMI</span>
@@ -559,6 +564,15 @@
 
 
  export default {
+    methods:{
+      openModal(){
+        this.$bvModal.show('modal-1')
+        var v = this;
+        setTimeout(function(){
+          v.$bvModal.hide('modal-1')
+        },1000)
+      }
+    }
    
  }
 </script>

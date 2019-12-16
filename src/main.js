@@ -19,7 +19,9 @@ Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
-
+import SweetAlertIcons from 'vue-sweetalert-icons';
+ 
+Vue.use(SweetAlertIcons);
 
 
 new Vue({

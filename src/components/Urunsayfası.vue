@@ -1,5 +1,8 @@
 <template>
-  <div class="urunsayfasi">
+  <div class="urunsayfasi" @click="openModal">
+    <b-modal id="modal-1" hide-footer="true" hide-header="true" size="sm" body-bg-variant="light" title="BootstrapVue">
+      <p class="my-4"><sweetalert-icon="loading" /> </p>
+    </b-modal> 
     <div class="ustbilgi">
       <h3>Vanity Rose Pamuklu 2'li Yastık Kılıfı 50x70 Cm Pembe</h3>
       <span class="ustkampanya">Özel Fiyat</span>
@@ -151,7 +154,16 @@ export default {
       },
       arttir(){
         this.adet++
+      },
+      
+      openModal(){
+        this.$bvModal.show('modal-1')
+        var v = this;
+        setTimeout(function(){
+          v.$bvModal.hide('modal-1')
+        },1000)
       }
+    
     }
   }
 </script>
