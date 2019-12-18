@@ -1,0 +1,27 @@
+[
+  {
+    "email": "ece@gmail.com",
+    "sifre": "ece1234",
+    "AdSoyad": "ece şahbaz",
+    "telefon": "05301558988"
+  },
+  {
+    "email": "elif@gmail.com",
+    "sifre": "elif1234e",
+    "AdSoyad": "elif acar",
+    "telefon": "05312546339"
+  },
+  {
+    "email": "dogukan@gmail.com",
+    "sifre": "Dogu.246",
+    "AdSoyad": "doğukan yüce",
+    "telefon": "05558961213"
+  },
+  {
+    "email": "arda@gmail.com",
+    "sifre": "123arda",
+    "AdSoyad": "arda şahbaz",
+    "telefon": "05345869415"
+  },
+  
+]
