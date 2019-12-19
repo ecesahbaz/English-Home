@@ -10,6 +10,10 @@ import kurumsals from '../views/kurumsals.vue'
 import Hikaye from '../views/Hikaye.vue'
 import Urunbilgi2 from '../views/Urunbilgi2.vue'
 import Urbansayfa2 from '../views/Urbansayfa2.vue'
+import Dortluresim from '../views/Dortluresim.vue'
+import Urbansayfa3 from '../views/Urbansayfa3.vue'
+import Filtrerenk from '../views/Filtrerenk.vue'
+import gift from '../views/gift.vue'
 
 
 
@@ -18,9 +22,15 @@ Vue.use(VueRouter)
 const routes = [
   {
     
-    path: '/',
+    path: '/anasayfa',
     name: 'anasayfa',
     component: Anasayfa
+  },
+  {
+    
+    path: '/',
+    name: 'gift',
+    component: gift
   },
   {
     path: '/uye-giris',
@@ -63,11 +73,28 @@ const routes = [
     component: Urunbilgi2
   },
   {
-    path: '/urbanfolkpage',
+    path: '/urbanfolkpage2',
     name: 'urbanfolksayfa',
     component: Urbansayfa2
   },
+  {
+    path: '/dortlusayfa',
+    name: 'urbanfolkdortlu',
+    component: Dortluresim
+  },
+  {
+    path: '/urbanfolkpage3',
+    name: 'urbanfolksayfa2',
+    component: Urbansayfa3
+  },
+  {
+    path: '/urbanfolkfiltre',
+    name: 'filtreleme',
+    component: Filtrerenk
+  },
+  
 ]
+
 
 const router = new VueRouter({
   mode: 'history',
