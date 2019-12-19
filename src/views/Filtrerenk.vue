@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    
     <Header></Header>
-    <Body></Body>
+   
+    <Filtre></Filtre>
     
     
      <div class="sup-position2">
@@ -25,8 +26,8 @@
 <script>
 
 import Header from '@/components/Header.vue'
-import Body from '@/components/Body.vue'
-import Footer from '@/components/Footer.vue'
+
+import Filtre from '@/components/Filtre.vue'
 
 
 
@@ -36,8 +37,8 @@ export default {
   components: {
    
     Header,
-    Body,
-    Footer
+
+    Filtre
   },
 
   data(){
