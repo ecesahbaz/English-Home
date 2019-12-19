@@ -1,4 +1,3 @@
-
 <template>
     <div class="urban-f">
         <div class="p" style="position:relative; top:-69px; text-align:center;">
@@ -6,32 +5,33 @@
         </div>
         <div class="ustbaslik">
             <span>Anasayfa</span>
-            <p>(814 ürün)</p>
+            <p>(97 ürün) Filtreler :</p>
+            <router-link to="/urbanfolk"><img src="../assets/renkk.png"  style="position:relative; top:-128px; left:-60px;"></router-link>
+            <router-link to="/urbanfolk"><img src="../assets/filtre.png" style="position:relative; top:-128px; left:-50px;"></router-link>
         </div>
         <div class="altbaslik">
             <div id="kategori">
                 <h2>KATEGORİLER</h2>
             </div>
-            <div class="goruntuleme"> 
+            <div class="goruntuleme">
                 <span style="position:relative; left:-300px;">GÖRÜNTÜLE</span>
                 <img src="../assets/siralama.png" style="position:relative; top:-88px; left:-270px; cursor:pointer;">
                 <router-link to="./dortlusayfa"><img src="../assets/4.png" style="position:relative; top:-88px; left:-240px; cursor:pointer;" ></router-link>
       
 
 
-                <div class="urun" style="postion:relative; left:200px;" >
+                <div class="urun" style="position:relative; left:200px;">
                     <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
                 </div>
                 <p>SIRALA</p>
-                <div class="gelismis-siralama">
+                <div class="gelismis-siralama" style="position:relative; left:500px;">
                     <b-form-select v-model="selected2" :options="options2" size="sm" class="mt-3"></b-form-select>
                 </div>
-                <router-link to="/urbanfolk"><img src="../assets/geri.png" style="position:relative; bottom:245px; left:420px;"></router-link>
-                <router-link to="/urbanfolk"><img src="../assets/.1.png" style="position:relative; bottom:245px; left:430px;"></router-link>
-                <img src="../assets/.2.png" style="position:relative; bottom:245px; left:450px;">
-                <router-link to="/urbanfolkpage3"><img src="../assets/.3.png" style="position:relative; bottom:244px; left:470px;"></router-link>
-                <img src="../assets/24.png" style="position:relative; bottom:244px; left:480px;">
-                <router-link to="./urbanfolkpage3"><img src="../assets/ileri.png" style="position:relative; bottom:245px; left:490px;"></router-link>
+                <img src="../assets/1.png" style="position:relative; bottom:245px; left:430px;">
+                <router-link to="./urbanfolkpage2"><img src="../assets/2.png" style="position:relative; bottom:245px; left:450px;"></router-link>
+                <router-link to="./urbanfolkpage3"><img src="../assets/.3.png" style="position:relative; bottom:245px; left:460px;"></router-link>
+                <img src="../assets/24.png" style="position:relative; bottom:245px; left:470px;">
+                <router-link to="./urbanfolkpage2"><img src="../assets/ileri.png" style="position:relative; bottom:245px; left:480px;"></router-link>
                 <div class="kate" >
                     <ul>
                        <li ><a href="#" style="color:#333;"><router-link to="/yatakodası" style="color:#333;"> YATAK ODASI</router-link></a></li>
@@ -48,7 +48,7 @@
                     <p>RENK</p>
                     <button class="b1" type="button"></button>
                     <button class="b2" type="button"></button>
-                    <button class="b3" type="button"></button>
+                   <router-link to="/urbanfolk"> <img src="../assets/renk.png" style="position:relative; top:-10px; left:20px;"></router-link>
                     <button class="b4" type="button"></button>
                     <button class="b5" type="button"></button>
                     <button class="b6" type="button"></button>
@@ -107,16 +107,16 @@
             <div class="row" style="position:relative; top:-1000px; border:none; left:350px"> 
               <!-- %100 -->
                      
-              <div class="col-4"  v-for="(urbannsayfa,index) in Urbannsayfalar" :key="index" >
+              <div class="col-4"  v-for="(ufiltre,index) in Ufiltreler" :key="index" >
                 <!-- %25 -->
-                <a v-bind:href="urbannsayfa.url" >
+                <a v-bind:href="ufiltre.url" >
                   <br> <br> <br> <br> <br>  
-                  <img  v-bind:src="urbannsayfa.image" style="width:260px; height:200px; " />
+                  <img  v-bind:src="ufiltre.image" style="width:260px; height:200px; " />     
                 </a>
-                <p style="color:#000; font-size:13px; text-align:initial; "> {{urbannsayfa.acıklama}} </p>
+                <p style="color:#000; font-size:13px; text-align:initial; "> {{ufiltre.acıklama}} </p>
                             
-                <p style="color:black;"><strong><strike> {{urbannsayfa.fiyat}}</strike> </strong> </p>
-                <p style="color:red; border:1px solid red; width:200px;"> {{urbannsayfa.detay}}  </p>
+                <p style="color:black;"><strong><strike> {{ufiltre.fiyat}}</strike> </strong> </p>
+                <p style="color:red; border:1px solid red; width:200px;"> {{ufiltre.detay}}  </p>
                            
                           
                </div>
@@ -133,7 +133,7 @@
 
 
 <script>
-const API_URL="http://localhost:7000/urbannsayfa"
+const API_URL="http://localhost:7000/ufiltre"
 export default {
     
     mounted() {
@@ -141,8 +141,8 @@ export default {
         fetch(API_URL)
         .then(response=>response.json())
         .then(result=> {
-            this.Urbannsayfalar=result.Urbannsayfa;
-            console.log(this.Urbannsayfalar)
+            this.Ufiltreler=result.Ufiltre;
+            console.log(this.Ufiltreler)
         } )
         
     },
@@ -166,7 +166,7 @@ export default {
           { value: { D: '3PO' }, text: 'Renge Göre Sırala' },
           { value: 'e', text: 'Stoklu Ürünler', disabled: true }
         ],
-        Urbannsayfalar:[]
+        Ufiltreler:[]
        }
        
     }

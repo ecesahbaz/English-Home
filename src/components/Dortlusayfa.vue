@@ -1,4 +1,3 @@
-
 <template>
     <div class="urban-f">
         <div class="p" style="position:relative; top:-69px; text-align:center;">
@@ -12,26 +11,21 @@
             <div id="kategori">
                 <h2>KATEGORİLER</h2>
             </div>
-            <div class="goruntuleme"> 
+            <div class="goruntuleme">
                 <span style="position:relative; left:-300px;">GÖRÜNTÜLE</span>
-                <img src="../assets/siralama.png" style="position:relative; top:-88px; left:-270px; cursor:pointer;">
-                <router-link to="./dortlusayfa"><img src="../assets/4.png" style="position:relative; top:-88px; left:-240px; cursor:pointer;" ></router-link>
-      
-
-
-                <div class="urun" style="postion:relative; left:200px;" >
+                <router-link to="./urbanfolk"><img src="../assets/3.png" style="position:relative; top:-88px; left:-270px; cursor:pointer;"></router-link>
+                <img src="../assets/siralama2.png" style="position:relative; top:-88px; left:-240px; cursor:pointer;" >
+                
+                <div class="urun" style="position:relative; left:200px;">
                     <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
                 </div>
                 <p>SIRALA</p>
                 <div class="gelismis-siralama">
                     <b-form-select v-model="selected2" :options="options2" size="sm" class="mt-3"></b-form-select>
                 </div>
-                <router-link to="/urbanfolk"><img src="../assets/geri.png" style="position:relative; bottom:245px; left:420px;"></router-link>
-                <router-link to="/urbanfolk"><img src="../assets/.1.png" style="position:relative; bottom:245px; left:430px;"></router-link>
-                <img src="../assets/.2.png" style="position:relative; bottom:245px; left:450px;">
-                <router-link to="/urbanfolkpage3"><img src="../assets/.3.png" style="position:relative; bottom:244px; left:470px;"></router-link>
-                <img src="../assets/24.png" style="position:relative; bottom:244px; left:480px;">
-                <router-link to="./urbanfolkpage3"><img src="../assets/ileri.png" style="position:relative; bottom:245px; left:490px;"></router-link>
+                <div class="overflow-auto" style="position:relative; bottom:250px; left:1030px;">
+                    <b-pagination-nav :link-gen="linkGen" :number-of-pages="10" use-router></b-pagination-nav>
+                </div>
                 <div class="kate" >
                     <ul>
                        <li ><a href="#" style="color:#333;"><router-link to="/yatakodası" style="color:#333;"> YATAK ODASI</router-link></a></li>
@@ -104,19 +98,19 @@
                 </div>
                 
             </div>
-            <div class="row" style="position:relative; top:-1000px; border:none; left:350px"> 
+            <div class="row" style="position:relative; top:-1055px; border:none; left:350px;"> 
               <!-- %100 -->
                      
-              <div class="col-4"  v-for="(urbannsayfa,index) in Urbannsayfalar" :key="index" >
+              <div class="col-3"  v-for="(urbansayfa,index) in Urbansayfalar" :key="index" >
                 <!-- %25 -->
-                <a v-bind:href="urbannsayfa.url" >
+                <a v-bind:href="urbansayfa.url" >
                   <br> <br> <br> <br> <br>  
-                  <img  v-bind:src="urbannsayfa.image" style="width:260px; height:200px; " />
+                  <router-link to="/urbanfolkpage"><img  v-bind:src="urbansayfa.image" style="padding:20px; width:260px; height:200px; " /></router-link>     
                 </a>
-                <p style="color:#000; font-size:13px; text-align:initial; "> {{urbannsayfa.acıklama}} </p>
+                <p style="color:#000; font-size:13px; text-align:initial; position:relative; left:30px; "> {{urbansayfa.acıklama}} </p>
                             
-                <p style="color:black;"><strong><strike> {{urbannsayfa.fiyat}}</strike> </strong> </p>
-                <p style="color:red; border:1px solid red; width:200px;"> {{urbannsayfa.detay}}  </p>
+                <p style="color:black; position:relative; left:30px;"><strong><strike> {{urbansayfa.fiyat}}</strike> </strong> </p>
+                <p style="color:red; border:1px solid red; width:200px; position:relative; left:30px;"> {{urbansayfa.detay}}  </p>
                            
                           
                </div>
@@ -133,7 +127,7 @@
 
 
 <script>
-const API_URL="http://localhost:7000/urbannsayfa"
+const API_URL="http://localhost:7000/urbansayfa"
 export default {
     
     mounted() {
@@ -141,8 +135,8 @@ export default {
         fetch(API_URL)
         .then(response=>response.json())
         .then(result=> {
-            this.Urbannsayfalar=result.Urbannsayfa;
-            console.log(this.Urbannsayfalar)
+            this.Urbansayfalar=result.Urbansayfa;
+            console.log(this.Urbansayfalar)
         } )
         
     },
@@ -166,7 +160,7 @@ export default {
           { value: { D: '3PO' }, text: 'Renge Göre Sırala' },
           { value: 'e', text: 'Stoklu Ürünler', disabled: true }
         ],
-        Urbannsayfalar:[]
+        Urbansayfalar:[]
        }
        
     }
@@ -409,7 +403,7 @@ export default {
     width: 150px;
     position: relative;
     bottom:170px;
-    left:10px;
+    left:200px;
     border:none;
 
 }
