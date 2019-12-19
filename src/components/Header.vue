@@ -507,6 +507,7 @@
 
       <li><a href="#">MAĞAZALAR</a></li>
       <input type="text" name="search" placeholder="Ara..">
+      <button type="button" id="arama" style="background-color:rgb(190, 30, 45);border:none; width:50px; height:40px; position:relative; top:20px; left:20px;"></button>
     </ul>
     <div class="favoriler"> 
       <img src="../assets/favoriler.png" style="cursor:pointer">

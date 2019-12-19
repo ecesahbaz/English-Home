@@ -30,7 +30,7 @@
                             <!-- %25 -->
                             <a v-bind:href="yatak.url" >
                                 <br> <br> <br> <br> <br>  
-                             <router-link to="/urbanfolkpage"><img  v-bind:src="yatak.image" style="width:260px; height:200px;" /></router-link>     
+                             <router-link to="/urunsayfa"><img  v-bind:src="yatak.image" style="width:260px; height:200px;" /></router-link>     
                             </a>
                              <p style="color:#000; font-size:13px; text-align:initial; "> {{yatak.acıklama}} </p>
                             

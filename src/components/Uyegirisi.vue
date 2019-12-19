@@ -3,9 +3,29 @@
         <b-tabs content-class="mt-3" fill>
             
             <b-tab title="ÜYEYİM" active class="uyegirisi" >
-              <input type="text1" name="epostaadresi" placeholder="E-Posta Adresiniz" class="inp" required autofocus><br>
-              <input type="password" name="password" placeholder="Şifreniz" class="inp" required><br>
-              <div class="btn">GİRİŞ YAP</div>
+           
+              <input
+              v-model="input.username"
+              style="position:relative; top:-10px; left:20px;"
+              type="text"
+              id="email"
+              name="email"
+              required
+              autofocus="autofocus"
+              class="inputs"
+              placeholder="Eposta Adresinizi Giriniz"
+              />
+              <input
+              v-model="input.password"
+              id="password"
+              name="password"
+              required
+              class="inputs"
+              placeholder="Parola  Giriniz"
+              />
+             
+
+              <div class="btn" v-on:click="login()">GİRİŞ YAP</div>
               <input type="checkbox" class="bilgilendirme" id="hatırla1">
               <label class="hatırla-label" for="hatırla1">Beni Hatırla</label><br>
               <a href="#" id="forgot">Şifremi Unuttum</a>
@@ -13,23 +33,59 @@
             </b-tab>
              
             <b-tab title="ÜYE DEĞİLİM" class="uyeol">
-              <input type="text1" name="uname"  class="inp1" required autofocus><br>
-              <p id="ad">Adınız</p>
-              <input type="text1" name="usurname" class="inp2" required><br>
-              <p id="soyad">Soyadınız</p>
-              <input type="email" name="email"  class="inp3" required><br>
-              <p id="email">E-Posta Adresiniz</p>
-              <input type="telno" name="telno" class="inp4" required><br>
-              <p id="telno">Telefon Numaranız</p>
-              <input type="text1" name="uname" class="inp5" required autofocus><br>
-              <p id="sifre">Şifreniz</p>
+              
+              
+
+
+              <form style="position:relative;top:200px;" >
+
+                 <div style="position:relative; top:-200px;">
+                 <input v-model="AdSoyad" 
+                 type="AdSoyad"
+                 required
+                 name="AdSoyad"
+                 class="inputs"
+                 placeholder="Ad Soyad giriniz">
+                 </div>
+                 <br>
+                 <div style="position:relative; top:-200px;">
+                 <input v-model="email" 
+                 type="email"
+                 required
+                 name="email"
+                 class="inputs"
+                 placeholder="Eposta giriniz">
+                 </div>
+                 <br>
+                 <div style="position:relative; top:-200px;">
+                 <input v-model="telefon" 
+                 type="telefon"
+                 required
+                 name="telefon"
+                 class="inputs"
+                 placeholder="Cep Telefonu giriniz">
+                 </div>
+                 <br>
+                 <div style="position:relative; top:-200px;">
+                 <input v-model="sifre" 
+                 type="sifre"
+                 required
+                 name="sifre"
+                 class="inputs"
+                 placeholder="Parola giriniz">
+                 </div>
+            </form>
+
+
+              
+              <div class="btn" @click="userEkle" style="position:relative; top:150px;">ÜYE OL</div>
+
               <input type="checkbox" class="bilgilendirme" id="bilgi1">
               <label class="bilgi-label" for="bilgi1">Bilgilendirme e-postalarını almak istiyorum</label><br>
               <input type="checkbox" class="bilgilendirme" id="bilgi2">
               <label class="bilgi-label2" for="bilgi2">Bilgilendirme SMS’lerini almak istiyorum</label><br>
               <input type="checkbox" class="bilgilendirme" id="bilgi3">
               <label class="bilgi-label3" for="bilgi3">Üyelik sözleşmesi ve Kişisel verilerin korunmasını<br> kabul ediyorum.</label><br>
-              <div class="btn">ÜYE OL</div>
 
             </b-tab>
               
@@ -49,8 +105,86 @@
 
 
 <script>
+import axios from "axios";
+const baseURL ="http://localhost:7000/uye/kaydet"
 export default {
     
+    data(){
+        return{
+            input:{
+                username:"",
+                password:""
+            },
+            Uyeler:[],
+            hatali:false,
+
+            user:[],
+            AdSoyad:"",
+            email:"",
+            telefon:"",
+            sifre:""
+
+
+
+
+            
+        };
+
+
+    },
+    async created(){
+        try{
+            const res = await axios.get("http://localhost:7000/uye")
+            this.Uyeler = res.data;
+        }
+        catch(e){
+            console.error(e);
+        }
+    },
+    
+    methods:{
+        login(){
+            for(let i=0; i<this.Uyeler.length; i++){
+                
+                if(this.input.username !="" && this.input.password !=""){
+                    
+                    if(
+                        this.input.username == this.Uyeler[i].email &&
+                        this.input.password == this.Uyeler[i].sifre
+                    ){
+                        alert("Giriş Başarılı Anasayfaya Yönlendiriliyorsunuz");
+                        this.$emit("authenticated", true);
+                        this.$router.replace({ path: "/"});
+                        this.hatali = true;
+                    }
+                
+                }
+            }
+            if(this.input.username=="" || this.input.password ==""){
+                alert("Bunlar Boş")
+            }
+        },
+        async userEkle() {
+         try{
+         const res = await axios.post(baseURL,{
+       
+         AdSoyad:this.AdSoyad,
+         email:this.email,
+         telefon:this.telefon,
+         sifre:this.sifre
+       
+          
+         });
+          if(res.err === true) throw new Error()
+          else console.log("başarılı")
+       } catch {
+         console.log("hata")
+       }
+
+       },
+    }
+   
+   
 }
 </script>
 

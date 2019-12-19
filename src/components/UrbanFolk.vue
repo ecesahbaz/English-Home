@@ -1,6 +1,6 @@
 <template>
     <div class="urban-f">
-        <div class="p">
+        <div class="p" style="position:relative; top:-69px; text-align:center;">
           75 TL Üzeri Alışverişlerinizde KARGO BEDAVA!
         </div>
         <div class="ustbaslik">
@@ -12,18 +12,24 @@
                 <h2>KATEGORİLER</h2>
             </div>
             <div class="goruntuleme">
-                <span><router-link to="/urban-urunsayfa">GÖRÜNTÜLE</router-link></span>
-                <img
-                <div class="urun">
+                <span style="position:relative; left:-300px;">GÖRÜNTÜLE</span>
+                <img src="../assets/siralama.png" style="position:relative; top:-88px; left:-270px; cursor:pointer;">
+                <router-link to="./dortlusayfa"><img src="../assets/4.png" style="position:relative; top:-88px; left:-240px; cursor:pointer;" ></router-link>
+      
+
+
+                <div class="urun" style="position:relative; left:200px;">
                     <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
                 </div>
                 <p>SIRALA</p>
-                <div class="gelismis-siralama">
+                <div class="gelismis-siralama" style="position:relative; left:500px;">
                     <b-form-select v-model="selected2" :options="options2" size="sm" class="mt-3"></b-form-select>
                 </div>
-                <div class="overflow-auto" style="position:relative; bottom:250px; left:1030px;">
-                    <b-pagination-nav :link-gen="linkGen" :number-of-pages="10" use-router></b-pagination-nav>
-                </div>
+                <img src="../assets/1.png" style="position:relative; bottom:245px; left:430px;">
+                <router-link to="./urbanfolkpage2"><img src="../assets/2.png" style="position:relative; bottom:245px; left:450px;"></router-link>
+                <router-link to="./urbanfolkpage3"><img src="../assets/.3.png" style="position:relative; bottom:245px; left:460px;"></router-link>
+                <img src="../assets/24.png" style="position:relative; bottom:245px; left:470px;">
+                <router-link to="./urbanfolkpage2"><img src="../assets/ileri.png" style="position:relative; bottom:245px; left:480px;"></router-link>
                 <div class="kate" >
                     <ul>
                        <li ><a href="#" style="color:#333;"><router-link to="/yatakodası" style="color:#333;"> YATAK ODASI</router-link></a></li>
@@ -40,7 +46,7 @@
                     <p>RENK</p>
                     <button class="b1" type="button"></button>
                     <button class="b2" type="button"></button>
-                    <button class="b3" type="button"></button>
+                    <router-link to="/urbanfolkfiltre"><button class="b3" type="button"></button></router-link>
                     <button class="b4" type="button"></button>
                     <button class="b5" type="button"></button>
                     <button class="b6" type="button"></button>
@@ -96,291 +102,28 @@
                 </div>
                 
             </div>
-            <div class="images" >
-                <div class="overlay"><router-link to="/urban-urunsayfa">SEPETE EKLE</router-link></div>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/30/155721/e28560b1-d917-4f0f-a901-d18599dde5d5_size365x273_cropCenter.jpg" alt="product image" 
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2"
-                >   
-                    
-                    <b-card-text style="font-size:13px;">
-                        Rosery Pamuklu Çift Kişilik Nevresim Takımı 200x220 Cm Mavi
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺129,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/10/16/155714/781d9044-84f4-477f-b4ff-f08ffdcec091_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-a"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Urban Liberty Pamuklu Çift Kişilik Nevresim Takımı 200x220
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺129,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/08/23/152035/bf214249-930a-4927-962a-9a9b18d3d491_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-b"
-                >
-                    <b-card-text style="font-size:13px;">
+            <div class="row" style="position:relative; top:-1000px; border:none; left:350px"> 
+              <!-- %100 -->
+                     
+              <div class="col-4"  v-for="(urbansayfa,index) in Urbansayfalar" :key="index" >
+                <!-- %25 -->
+                <a v-bind:href="urbansayfa.url" >
+                  <br> <br> <br> <br> <br>  
+                  <router-link to="/urbanfolkpage"><img  v-bind:src="urbansayfa.image" style="width:260px; height:200px; " /></router-link>     
+                </a>
+                <p style="color:#000; font-size:13px; text-align:initial; "> {{urbansayfa.acıklama}} </p>
+                            
+                <p style="color:black;"><strong><strike> {{urbansayfa.fiyat}}</strike> </strong> </p>
+                <p style="color:red; border:1px solid red; width:200px;"> {{urbansayfa.detay}}  </p>
+                           
+                          
+               </div>
                         
-                        Urban Check Pamuklu Çift Kişilik Nevresim Seti 200x220 Cm Mavi
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺109,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/30/152978/cc3cfacf-bb5c-438d-bfcf-2c98a5078a38_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-c"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Softy Düz Çift Kişilik Battanıye 200x220 Cm Bej - Yeşil
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺89,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/10/11/152952/5d70ed5c-fa6f-4629-87f6-66e8f73f8001_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-d"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Etnich Akrilik Tv Battanıye 130x170 Cm Tarçın
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺59,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/10/11/152951/2763911d-0994-4e5d-9321-e3f5e67a22fd_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-e"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Urban Diamond Akrilik Tv Battanıye 130x170 Cm Yeşil
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺59,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/25/150932/92c0c34b-4ffd-4120-b357-b2ed04722538_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-f"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Folk Art Cam Tekli Sürahı 1180 Ml Amber
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺29,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/25/150928/fc1fff1d-5deb-4175-9303-169db1cfda9b_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-g"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Urbann Cam Tekli Sürahı 1180 Ml Mavi
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺29,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/27/150937/e71cacf5-ee3b-4255-b905-aa975bc4940f_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-h"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Urbann Cam 3'lü Ayaklı Meşrubat Bardağı 330 Ml Mavi
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺29,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/08/05/151206/9377ae1e-b4a2-42c8-81fa-381f906c1a74_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-i"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Liberty New Bone 2'li Kupa 250 Ml Kırmızı - Beyaz - Lacivert
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺34,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/08/05/151202/6a700f87-4005-44d2-87f4-0d6b829c1c5d_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-j"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Folk Art New Bone 2'li Kupa 250 Ml Gri
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺34,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/05/151297/dcafac55-d0fc-46f7-9642-22148d33c7a1_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-k"
-                >
-                    <b-card-text style="font-size:13px;">
-                        İris Porselen 2'li Çay Fıncanı Takımı 200 Ml Mor - Lila
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺69,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/05/151294/ba4d9896-39bb-49a1-bf04-76210d18a7e9_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-l"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Urbann Porselen 2'li Çay Fıncanı Takımı 200 Ml Renkli
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺69,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/16/156574/c3b8e516-4285-4b97-9112-8d2fc965550b_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-m"
-                >
-                    <b-card-text style="font-size:13px;">
-                        Paisley Organızer 35x60 Cm Açık Bej
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺19,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/19/157058/8806fa79-330a-44dd-b60f-16c9c4760293_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-n"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Royal Banyo Paspası 60x90 Cm Mavi
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺39,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/08/23/156159/fbfc477b-d0a5-4e1d-b4d3-cdaf9eb272d9_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-o"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Ecocotton Iyra Organik Pamuk Bornoz L Yeşil
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺273,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/07/12/142878/7166bfb6-5146-4f22-8581-0a1bf876ff69_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-p"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Intense Pirinç Bayan Bornoz L-xl Koyu Gül Kurusu
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺119,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/07/04/142879/bcf185bb-9d1e-4bc3-a82a-15d12484ff84_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-r"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Intense Pirinç Erkek Bornoz M-l İndigo
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺119,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/03/153078/b2b4f3c3-5b55-4832-9b55-1c023d7c395d_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-s"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Urban Folk Dokuma Koltuk Şalı 120x160 Cm Hardal
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺69,99</span>
-                </b-card>
-                <b-card
-                  img-src="https://cdn-eh.akinon.net/products/2019/09/03/153079/47d3526e-751a-4475-8717-ca77fb3f0d35_size365x273_cropCenter.jpg" alt="product image"
-                  img-alt="Image"
-                  img-top
-                  tag="article"
-                  style="max-width: 20rem;"
-                  class="mb-2-t"
-                >
-                    <b-card-text style="font-size:13px;">
-                       Tiles Dokuma Koltuk Şalı 120x160 Cm Gri
-                    </b-card-text>
-
-                    <span class="image1f">Özel Fiyat ₺69,99</span>
-                </b-card>
+    
             </div>
+           
+
+
         </div>
     </div>
 
@@ -388,14 +131,23 @@
 
 
 <script>
+const API_URL="http://localhost:7000/urbansayfa"
 export default {
-    methods: {
-      linkGen(pageNum) {
-        return pageNum === 1 ? '?' : `?page=${pageNum}`
-       
-      }
+    
+    mounted() {
+
+        fetch(API_URL)
+        .then(response=>response.json())
+        .then(result=> {
+            this.Urbansayfalar=result.Urbansayfa;
+            console.log(this.Urbansayfalar)
+        } )
+        
     },
+    
+
     data() {
+      
       return {
         selected: null,
         options: [
@@ -412,7 +164,7 @@ export default {
           { value: { D: '3PO' }, text: 'Renge Göre Sırala' },
           { value: 'e', text: 'Stoklu Ürünler', disabled: true }
         ],
-      
+        Urbansayfalar:[]
        }
        
     }
@@ -655,7 +407,7 @@ export default {
     width: 150px;
     position: relative;
     bottom:170px;
-    left:200px;
+    left:10px;
     border:none;
 
 }
